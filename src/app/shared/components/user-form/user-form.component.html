@@ -1,0 +1,38 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <label for="email">Email</label>
+  <div class="field">
+    <div class="control has-icons-left">
+      <input class="input" type="email" formControlName="email" name="email" required [ngClass]="{
+    'is-danger': formErrors.email,
+    'is-success': false}">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+    </div>
+    <p class="help is-danger" *ngIf="formErrors.email">
+      {{ formErrors.email }}
+    </p>
+  </div>
+
+  <label for="password">Password</label>
+  <div class="field">
+    <div class="control has-icons-left">
+      <input class="input" type="password" formControlName="password" name="password" required>
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+    </div>
+    <p class="help is-danger" *ngIf="formErrors.password">
+      {{ formErrors.password }}
+    </p>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link" type="submit" [disabled]="!userForm.valid" [ngClass]="{'is-loading': (loading$ | async)}">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-text" type="reset">Clear</button>
+    </div>
+  </div>
+</form>

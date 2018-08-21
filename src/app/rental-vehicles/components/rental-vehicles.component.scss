@@ -1,0 +1,19 @@
+.card.large {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: initial;
+  border-radius: 5px;
+  padding-top: 20px;
+}
+
+.media-content {
+  overflow: hidden;
+}
+
+.title.no-padding {
+  margin-bottom: 0 !important;
+}
+
+.img.vehicle {
+  width: 416px;
+  height: 178px;
+}

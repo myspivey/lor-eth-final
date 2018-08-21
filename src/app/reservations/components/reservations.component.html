@@ -1,0 +1,95 @@
+<div class="field is-grouped">
+  <h2 class="control">Reservations</h2>
+  <p class="control">
+    <a class="button" [ngClass]="{'is-loading': (reservationsLoading$ | async)}" (click)="getReservations()">
+      <span class="icon is-small">
+        <i class="far fa-sync-alt"></i>
+      </span>
+      <span>Refresh</span>
+    </a>
+  </p>
+</div>
+<h4>Renter</h4>
+<table class="table is-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>
+        <abbr title="Start Date">Start</abbr>
+      </th>
+      <th>
+        <abbr title="End Date">End</abbr>
+      </th>
+      <th>Nights</th>
+      <th>
+        <abbr title="Cost Per Night">Cost</abbr>
+      </th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of (reservationsAsRenter$ | async); let i = index;">
+      <th>{{i}}</th>
+      <td>{{r.state | state}}</td>
+      <td>{{r.startDateTimestamp | date:'shortDate'}}</td>
+      <td>{{r.endDateTimestamp | date:'shortDate'}}</td>
+      <td>{{r.nights}}</td>
+      <td>{{r.valueInEth}} ETH</td>
+      <td>
+        <label *ngIf="r.state !== States.Active">No Actions Available</label>
+        <a class="button is-success" *ngIf="r.state === States.Active" (click)="reservationAction(r, States.Completed)">Complete</a>
+      </td>
+    </tr>
+    <tr *ngIf="(reservationsAsRenter$ | async).length === 0">
+      <th colspan="6" class="has-text-centered">
+        <label>No Reservations Found</label>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Owner</h4>
+<table class="table is-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>
+        <abbr title="Start Date">Start</abbr>
+      </th>
+      <th>
+        <abbr title="End Date">End</abbr>
+      </th>
+      <th>Nights</th>
+      <th>Income</th>
+      <th>
+        <abbr title="Paid to Date">Paid</abbr>
+      </th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of (reservationsAsOwner$ | async); let i = index;">
+      <th>{{i}}</th>
+      <td>{{r.state | state}}</td>
+      <td>{{r.startDateTimestamp | date:'shortDate'}}</td>
+      <td>{{r.endDateTimestamp | date:'shortDate'}}</td>
+      <td>{{r.nights}}</td>
+      <td>{{r.valueInEth}} ETH</td>
+      <td>{{r.paid}} ETH</td>
+      <td>
+        <a class="button is-info" *ngIf="r.state === States.Created" (click)="reservationAction(r, States.Confirmed)">Confirm</a>
+        <a class="button is-info" *ngIf="r.state === States.Confirmed" (click)="reservationAction(r, States.Active)">Start</a>
+        <a class="button is-danger" *ngIf="r.state === States.Created" (click)="reservationAction(r, States.Canceled)">Cancel</a>
+      </td>
+    </tr>
+    <tr *ngIf="(reservationsAsOwner$ | async).length === 0">
+      <th colspan="7" class="has-text-centered">
+        <label>No Reservations Found</label>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
+<lor-create-reservation-modal *ngIf="isCreate && (reservationsEnabled$ | async)"></lor-create-reservation-modal>

@@ -1,0 +1,55 @@
+{
+  "name": "lor-truffle",
+  "version": "0.0.1",
+  "private": true,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "compile": "truffle compile",
+    "migrate": "npm run migrate:cli",
+    "migrate:cli": "truffle migrate --reset",
+    "migrate:gui": "truffle migrate --reset --network development_gui",
+    "migrate:rinkeby": "truffle migrate --reset --network rinkeby",
+    "js:lint": "eslint test/** migrations/**",
+    "js:lint:fix": "eslint --fix test/** migrations/**",
+    "sol:lint": "solium -d contracts/",
+    "sol:lint:fix": "solium -d contracts/ --fix",
+    "lint": "npm run js:lint && npm run sol:lint",
+    "lint:fix": "npm run js:lint:fix && npm run sol:lint:fix",
+    "pretest": "npm run lint",
+    "test": "truffle test",
+    "coverage": "solidity-coverage",
+    "ganache": "ganache-cli -a 10 -m 'oak repeat enjoy surprise shed upon skin plug carry okay warrior board'",
+    "nuke": "rm -rf build && truffle compile && truffle migrate"
+  },
+  "dependencies": {
+    "@0xproject/base-contract": "^1.0.4",
+    "@0xproject/sol-compiler": "^1.0.5",
+    "@0xproject/utils": "^1.0.5",
+    "@0xproject/web3-wrapper": "^1.1.2",
+    "ethereum-types": "^1.0.4",
+    "ethers": "^3.0.26",
+    "lodash": "^4.17.10",
+    "openzeppelin-solidity": "1.10.0",
+    "truffle-hdwallet-provider": "0.0.6"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eth-gas-reporter": "^0.1.10",
+    "ganache-cli": "^6.1.8",
+    "solidity-coverage": "^0.5.7",
+    "solium": "^1.1.8",
+    "truffle": "^4.1.14",
+    "webpack": "^4.16.5"
+  }
+}

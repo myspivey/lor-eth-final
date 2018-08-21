@@ -1,0 +1,2 @@
+ProofOfLicenseOracle: 0xcf4f0593f93fd4d4eba4de84815ea132c9a05746 https://rinkeby.etherscan.io/address/0xcf4f0593f93fd4d4eba4de84815ea132c9a05746
+ReservationContractFactory: 0xac6af4444e1b3a85820662b89038e738226b28e6 https://rinkeby.etherscan.io/address/0xac6af4444e1b3a85820662b89038e738226b28e6

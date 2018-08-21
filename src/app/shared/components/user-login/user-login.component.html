@@ -1,0 +1,51 @@
+<div>
+  <h3>uPort Login</h3>
+
+  <a (click)="signInWithuPort()" class="button button-info">
+    <span class="icon">
+      <i class="fa fa-user-secret fa-lg"></i>
+    </span>
+    <span>uPort</span>
+  </a>
+
+  <hr>
+  <!--
+  <h3>Social Login</h3>
+
+  <div class="buttons">
+    <button (click)="signInWithGoogle()" class="button btn-social btn-google tooltip" disabled data-tooltip="Coming Soon!">
+      <i class="fab fa-google-plus-g fa-lg"></i> Google
+    </button>
+
+    <button (click)="signInWithGithub()" class="button btn-social btn-github tooltip" disabled data-tooltip="Coming Soon!">
+      <i class="fab fa-github fa-lg"></i> GitHub
+    </button>
+
+    <button (click)="signInWithFacebook()" class="button btn-social btn-facebook tooltip" disabled data-tooltip="Coming Soon!">
+      <i class="fab fa-facebook fa-lg"></i> Facebook
+    </button>
+
+    <button (click)="signInWithTwitter()" class="button btn-social btn-twitter tooltip" disabled data-tooltip="Coming Soon!">
+      <i class="fab fa-twitter fa-lg"></i> Twitter
+    </button>
+  </div>
+
+  <hr> -->
+
+  <!-- <h3>Anonymous Login</h3>
+
+      <button (click)="signInAnonymously()" class="button button-info">
+        <i class="fa fa-user-secret fa-lg"></i> Connect Anonymously
+      </button>
+
+    <hr> -->
+
+
+  <h3 class="title is-3">Email {{newUser ? 'Registration' : 'Login'}}</h3>
+
+  <button class="button is-small" (click)="newUser = !newUser">{{newUser ? 'Already Registered?' : 'Sign Up for an Account!'}}</button>
+  <br/>
+  <br/>
+  <lor-user-form (userSubmit)="onUserSubmit($event)"></lor-user-form>
+
+</div>

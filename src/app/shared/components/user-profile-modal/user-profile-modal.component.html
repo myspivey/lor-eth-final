@@ -1,0 +1,29 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title" style="margin-bottom: 0 !important">Edit Profile</p>
+        <button class="delete" aria-label="close" (click)="close()"></button>
+      </header>
+      <section class="modal-card-body">
+        <p class="is-size-6">Current Selected Address: {{(ethAccountPrimary$ | async)}}</p>
+        <p class="is-size-6">Current Profile Address: {{(user$ | async)?.address}}</p>
+        <input class="input" type="text" formControlName="address" placeholder="Address" required>
+        <div class="is-divider-vertical" data-content="License Validation"></div>
+        <p class="is-size-6 has-text-grey-light">This is to test the oracle, send it a random string and it notarize it. This could be used to send a validated license
+          code from a third party API and notarize it for verification.
+        </p>
+        <input class="input" type="text" formControlName="license" placeholder="Random String Here">
+      </section>
+      <footer class="modal-card-foot">
+        <nav class="container level">
+          <div class="level-right">
+            <button class="level-item button" type="button" (click)="close()">Cancel</button>
+            <button class="level-item button is-success" type="submit" [disabled]="!profileForm.valid" [ngClass]="{'is-loading': (loading$ | async)}">Save</button>
+          </div>
+        </nav>
+      </footer>
+    </div>
+  </div>
+</form>

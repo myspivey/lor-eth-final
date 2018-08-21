@@ -1,0 +1,13 @@
+<div *ngIf="notify.msg | async as msg" class="message" [ngClass]="{
+    'is-danger': msg.style == 'error',
+    'is-success': msg.style == 'success',
+    'is-info': msg.style == 'info'
+  }">
+  <div class="message-header">
+    <p></p>
+    <button class="delete" aria-label="delete" (click)="notify.clear()"></button>
+  </div>
+  <div class="message-body">
+    {{ msg.content }}
+  </div>
+</div>

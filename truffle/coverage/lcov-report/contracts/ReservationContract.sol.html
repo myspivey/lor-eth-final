@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/ReservationContract.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> ReservationContract.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>28/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.82% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>18/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.91% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>35/35</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity 0.4.24;
+&nbsp;
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol";
+&nbsp;
+/**
+  * @author James Spivey &lt;spivey@zentostudios.com&gt;
+  * @title ReservationContract created by ReservationFactoryContract
+  * @dev
+  * This contract should not be created directly. This is designed to
+  * be created by a factory that will manage each step of the reservation.
+  */
+contract ReservationContract is Destructible {
+  using SafeMath for uint256;
+&nbsp;
+  /*
+    These are the events for all of the different states
+    that this contract can be in. This will help the UI
+    to update the list as these items occur. I dispatch
+    here and in the factory itself for tracability.
+  */
+  event ReservationCreated(
+    bytes32 id, address owner, address renter
+  );
+  event ReservationConfirmed(
+    bytes32 id, address owner, address renter, address caller
+  );
+  event ReservationActive(
+    bytes32 id, address owner, address renter, address caller
+  );
+  event ReservationCompleted(
+    bytes32 id, address owner, address renter, address caller
+  );
+  event ReservationCanceled(
+    bytes32 id, address owner, address renter, address caller
+  );
+  event ReservationDestroyed(
+    bytes32 id, address owner, address renter
+  );
+&nbsp;
+  //Available contract states
+  enum State { Created, Confirmed, Active, Completed, Canceled }
+&nbsp;
+  //The reservation structure to cleanly pass around
+  struct Reservation {
+    bytes32 id; //Unique id generated by Factory
+    address owner; //Address of the vehicle owner
+    address renter; //Address of the renter
+    uint8 nights; //Number of nights being rented
+    uint256 rate; //Agreed rate at time of booking in wei
+    uint256 totalValue; //Total value of reservation in wei
+    uint256 createdDate; //Date reservation created
+    uint256 startDate; //Date reservation begins
+    uint256 endDate; //Date reservation ends
+    uint256 paid; //Tracks the amount that has been paid from contract so far
+  }
+&nbsp;
+  //Expose state and the reservation data
+  State public state = State.Created;
+  Reservation public data;
+&nbsp;
+  /** @dev Creates the reservation. This is called by the factory.
+    *      it also takes the value as it is payable.
+    * @param _totalValue Total value of reservation in wei
+    * @param _renter Address of the renter
+    * @param _id Unique id generated by Factory
+    * @param _owner Address of the vehicle owner
+    * @param _nights Number of nights being rented
+    * @param _rate Agreed rate at time of booking in wei
+    * @param _createdDate Date reservation created
+    * @param _startDate Date reservation begins
+    * @param _endDate Date reservation ends
+    */
+  constructor(
+    uint256 _totalValue,
+    address _renter,
+    bytes32 _id,
+    address _owner,
+    uint8 _nights,
+    uint256 _rate,
+    uint256 _createdDate,
+    uint256 _startDate,
+    uint256 _endDate
+  ) public payable {
+    //Ensure the amount sent is enough to fill the reservation again
+    require(
+      msg.value == _totalValue,
+      "Value sent does not equal reservation total cost"
+    );
+    //Ensure this was created by the factory. This is an extreme corner case
+    require(
+      msg.sender != _renter,
+      "Vehicle renter can not create reservation"
+    );
+    require(
+      msg.sender != _owner,
+      "Vehicle owner can not create reservation"
+    );
+&nbsp;
+    //owner is set by Ownable.sol which Destructible.sol inherits
+    //value comes from Factory
+    data = Reservation({
+      id: _id,
+      owner: _owner,
+      renter: _renter,
+      nights: _nights,
+      rate: _rate,
+      totalValue: _totalValue,
+      createdDate: _createdDate,
+      startDate: _startDate,
+      endDate: _endDate,
+      paid: 0
+    });
+    emit ReservationCreated(data.id, data.owner, data.renter);
+  }
+&nbsp;
+  /** @dev Ensures only a vehicle owner can call */
+  modifier onlyVehicleOwner(
+    address _caller
+  ) {
+    require(
+      _caller == data.owner,
+      "Only owner can call this."
+    );
+    _;
+  }
+&nbsp;
+  /** @dev Ensures only a renter can call */
+  modifier onlyVehicleRenter(
+    address _caller
+  ) {
+    require(
+      _caller == data.renter,
+      "Only renter can call this."
+    );
+    _;
+  }
+&nbsp;
+  /** @dev Ensures only a vehicle owner or renter can call */
+  modifier onlyContractMember(
+    address _caller
+  ) {
+    require(
+      _caller == data.renter || _caller == data.owner,
+      "Only owner or renter can call this."
+    );
+    _;
+  }
+&nbsp;
+  /** @dev Ensures reservation is provided state
+    * @param _state State to verify contract is in
+    */
+  modifier inState(
+    State _state
+  ) {
+    require(
+      state == _state,
+      "Invalid state."
+    );
+    _;
+  }
+&nbsp;
+  /** @dev Called to confirm a reservation. Only the factory can call.
+    *      it can only be called when in the Created state.
+    * @param _caller The address of who called this from the factory. This must be the vehicle owner.
+    */
+  function accept(address _caller)
+    public
+    onlyOwner
+    onlyVehicleOwner(_caller)
+    inState(State.Created)
+  {
+    state = State.Confirmed;
+    emit ReservationConfirmed(data.id, data.owner, data.renter, _caller);
+  }
+&nbsp;
+  /** @dev Called to start a reservation. Only the factory can call.
+    *      It can only be called when in the Confirmed state. This pays
+    *      half of the rental cost to the vehicle owner
+    * @param _caller The address of who called this from the factory. This must be the vehicle owner.
+    */
+  function start(address _caller)
+    public
+    onlyOwner
+    onlyVehicleOwner(_caller)
+    inState(State.Confirmed)
+  {
+    state = State.Active;
+    uint256 payment = SafeMath.div(data.totalValue, 2);
+&nbsp;
+    //Ensure our payment has a value and our contract has enough ether
+    <span class="missing-if-branch" title="else path not taken" >E</span>require(payment != 0, "Payment must be greater than zero");
+    <span class="missing-if-branch" title="else path not taken" >E</span>require(
+      address(this).balance / 2 &gt;= payment,
+      "Contract does not have enough ether for payment"
+    );
+&nbsp;
+    data.paid = payment;
+    data.owner.transfer(data.paid);
+    emit ReservationActive(data.id, data.owner, data.renter, _caller);
+  }
+&nbsp;
+  /** @dev Called to complete a reservation. Only the factory can call.
+    *      it can only be called when in the Active state. This pays
+    *      the last half of the rental cost to the vehicle owner.
+    * @param _caller The address of who called this from the factory. This must be the vehicle renter.
+    */
+  function complete(address _caller)
+    public
+    onlyOwner
+    onlyVehicleRenter(_caller)
+    inState(State.Active)
+  {
+    state = State.Completed;
+    uint256 payment = SafeMath.sub(data.totalValue, data.paid);
+&nbsp;
+    //Ensure our payment has a value and our contract has enough ether
+    <span class="missing-if-branch" title="else path not taken" >E</span>require(payment != 0, "Payment must be greater than zero");
+    <span class="missing-if-branch" title="else path not taken" >E</span>require(
+      address(this).balance &gt;= payment,
+      "Contract does not have enough ether for payment"
+    );
+&nbsp;
+    transferOwnership(data.owner);
+    data.paid = SafeMath.add(data.paid, payment);
+    data.owner.transfer(payment);
+    emit ReservationCompleted(data.id, data.owner, data.renter, _caller);
+  }
+&nbsp;
+  /** @dev Called to cancel a reservation. Only the factory can call.
+    *      It can only be called when in the Created state.
+    * @param _caller The address of who called this from the factory. This must be the vehicle owner.
+    */
+  function cancel(address _caller)
+    public
+    onlyOwner
+    onlyVehicleOwner(_caller)
+    inState(State.Created)
+  {
+    state = State.Canceled;
+    data.renter.transfer(data.totalValue);
+    emit ReservationCanceled(data.id, data.owner, data.renter, _caller);
+  }
+&nbsp;
+  /** @dev Called to destroy a reservation. Anyone can call.
+    *      It can only be called when in the Created state.
+    *      This returns the ether to the renter.
+    *      Not sure there is value in this with cancel as I want
+    *      tracability in the contracts so not actually implemented yet.
+    */
+  function destroy(address _caller)
+    public
+    onlyContractMember(_caller)
+    inState(State.Created)
+  {
+    emit ReservationDestroyed(data.id, data.owner, data.renter);
+    destroyAndSend(data.renter); //This is provided by Destructible.sol
+  }
+&nbsp;
+  /** @dev Dont receive ether via fallback.
+    * If this took extra ether then on destroyed
+    * the renter would get ether they did not send/own possibly
+    */
+<span class="fstat-no" title="function not covered" >  function () public </span>{ }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 20 2018 18:47:20 GMT-0600 (MDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

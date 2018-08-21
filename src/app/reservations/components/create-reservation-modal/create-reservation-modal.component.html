@@ -1,0 +1,84 @@
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title" style="margin-bottom: 0 !important">Create Reservation</p>
+        <button class="delete" aria-label="close" (click)="close()"></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- BEGIN VEHICLE SUMMARY -->
+        <div class="box">
+          <div class="media is-paddingless">
+            <figure class="media-left" style="margin-bottom: 0 !important">
+              <p class="image is-128x128" style="max-height: 54px">
+                <img class="vehicle" [src]="vehicleImg" alt="Rental Vehicle" *ngIf="vehicle && vehicle.imageUrl | async as vehicleImg">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong>
+                  <br/> Cost Per Night: {{vehicle.costPerNight}} ETH
+                  <br/> Owner: {{(vehicle.owner | async)?.address}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- BEGIN FORM -->
+        <div class="columns">
+          <div class="column">
+            <label class="label" style="padding-left: 30px">Start Date</label>
+            <div class="field has-addons has-addons-right">
+              <div class="control">
+                <input class="input" [min]="today" [matDatepicker]="startPicker" placeholder="Choose a date" formControlName="startDate"
+                  name="startDate" required>
+                <mat-datepicker #startPicker></mat-datepicker>
+              </div>
+              <div class="control">
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="is-divider-vertical" data-content="AND"></div>
+          <div class="column">
+            <label class="label">End Date</label>
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input" [min]="reservationForm.value.startDate" [matDatepicker]="endPicker" placeholder="Choose a date" formControlName="endDate"
+                  name="endDate" required [disabled]="!reservationForm.value.startDate">
+                <mat-datepicker #endPicker></mat-datepicker>
+              </div>
+              <div class="control">
+                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column" style="padding-left: 45px;padding-right: 45px;">
+            <p class="is-size-6 has-text-danger" *ngIf="addressMismatch">ADDRESSES DO NOT MATCH!!</p>
+            <p class="is-size-6" [ngClass]="{'has-text-danger': addressMismatch, 'has-text-grey': !addressMismatch}">Sending from Address: {{(ethAccountPrimary$ | async)}}</p>
+            <p class="is-size-6 has-text-danger" *ngIf="addressMismatch">Profile Address: {{(user$ | async)?.address}}</p>
+            <p class="is-size-6 has-text-grey" *ngIf="!addressMismatch">Current Balance: {{currentAccountBalance$ | async}} (ETH)</p>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <nav class="container level">
+          <div class="level-left">
+            <label class="level-item" *ngIf="totalNights">
+              <strong>Total Nights:</strong> &nbsp;&nbsp;{{totalNights}}</label>
+            <label class="level-item" *ngIf="totalCost">
+              <strong>Total Cost:</strong> &nbsp;&nbsp;{{totalCost}} ETH</label>
+          </div>
+          <div class="level-right">
+            <button class="level-item button" type="button" (click)="close()">Cancel</button>
+            <button class="level-item button is-success" type="submit" [disabled]="!reservationForm.valid || addressMismatch" [ngClass]="{'is-loading': (loading$ | async)}">Create Reservation</button>
+          </div>
+        </nav>
+      </footer>
+    </div>
+  </div>
+</form>

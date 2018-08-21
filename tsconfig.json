@@ -1,0 +1,56 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@0xproject/typescript-typings/types",
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "stream": ["node_modules/stream-browserify/index.js"],
+      "zlib": ["node_modules/browserify-zlib/lib/index.js"],
+      "crypto": ["node_modules/crypto-browserify/index.js"],
+      "@lor/core": [
+        "src/app/core"
+      ],
+      "@lor/core/contracts": [
+        "src/app/core/contracts"
+      ],
+      "@lor/core/guards": [
+        "src/app/core/guards"
+      ],
+      "@lor/core/models": [
+        "src/app/core/models"
+      ],
+      "@lor/core/services": [
+        "src/app/core/services"
+      ],
+      "@lor/core/state": [
+        "src/app/core/state"
+      ],
+      "@lor/core/state/*": [
+        "src/app/core/state/*"
+      ],
+      "@lor/shared": [
+        "src/app/shared"
+      ],
+      "@lor/shared/components": [
+        "src/app/shared/components"
+      ],
+      "@lor/shared/utils/*": [
+        "src/app/shared/utils/*"
+      ]
+    }
+  }
+}

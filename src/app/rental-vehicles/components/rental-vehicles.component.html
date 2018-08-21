@@ -1,0 +1,30 @@
+<div class="columns is-multiline">
+  <div class="column is-half" *ngFor="let vehicle of vehicles$ | async">
+    <div class="card large">
+      <div class="card-image">
+        <figure class="image">
+          <img class="vehicle" [src]="vehicleImg" alt="Rental Vehicle" *ngIf="vehicle.imageUrl | async as vehicleImg">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4 no-padding">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</p>
+          </div>
+        </div>
+        <div class="content">
+          <h4>Cost Per Night:
+            <strong>{{vehicle.costPerNight}} ETH</strong>
+          </h4>
+          {{vehicle.description}}
+          <br/>Network: {{vehicle.network}}
+        </div>
+      </div>
+      <div class="card-footer" *ngIf="loggedIn$ | async">
+        <a class="card-footer-item" [routerLink]="['/reservations/create']" [queryParams]="{vehicle: vehicle.id}">
+          RESERVE
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

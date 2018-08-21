@@ -1,0 +1,31 @@
+<div class="box">
+  <div *ngIf="user$ | async; then authenticated else guest">
+    <!-- template will replace this div -->
+  </div>
+</div>
+
+<!-- User NOT logged in -->
+<ng-template #guest class="box">
+  <h3>Howdy, GUEST</h3>
+  <p class="card-text">Login to get started...</p>
+  <button class="button" routerLink="/login">Login</button>
+</ng-template>
+
+<!-- User logged in -->
+<ng-template #authenticated>
+  <div *ngIf="user$ | async as user" class="has-text-centered">
+    <h3>Howdy, {{ user.displayName }}</h3>
+    <img class="card-img-top" [src]="user.photoURL">
+    <a class="button is-outlined" *ngIf="user.address && !addressMismatch" (click)="isEditModal = true">
+      <small>Edit Profile</small>
+    </a>
+    <a class="button is-danger is-outlined" *ngIf="!user.address" (click)="isEditModal = true">
+      <small>Please set your ETH address!</small>
+    </a>
+    <a class="button is-danger is-outlined" *ngIf="user.address && addressMismatch" (click)="isEditModal = true">
+      <small>ETH address mismatch!</small>
+    </a>
+  </div>
+</ng-template>
+
+<lor-user-profile-modal *ngIf="isEditModal" (closed)="isEditModal = false"></lor-user-profile-modal>

@@ -1,0 +1,39 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/">
+      <img src="assets/images/logo.png" alt="Luxury Offroad Rentals Logo" class="navbar-logo" /> Luxury Offroad Rentals ETH Final
+    </a>
+
+    <a id="navToggle" role="button" class="navbar-burger" (click)="toggleCollapse()" [ngClass]="{'is-active': show}">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu" [ngClass]="{'is-active': show}">
+    <div class="navbar-end">
+      <a class="navbar-item" routerLink="/">
+        Vehicles
+      </a>
+      <div *ngIf="user$ | async; then authenticated else guest">
+        <!-- template will replace this div -->
+      </div>
+    </div>
+  </div>
+</nav>
+
+<ng-template #authenticated>
+  <a class="navbar-item" routerLink="/reservations">
+    Reservations
+  </a>
+  <a class="navbar-item" (click)="logout()">
+    Logout
+  </a>
+</ng-template>
+
+<ng-template #guest>
+  <a class="navbar-item" routerLink="/login">
+    Login
+  </a>
+</ng-template>
