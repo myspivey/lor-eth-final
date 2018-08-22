@@ -24,6 +24,8 @@ Mnemonic `oak repeat enjoy surprise shed upon skin plug carry okay warrior board
 
 ## Development server
 
+Run `npm i` from the root folder and /truffle folder.
+
 Run `npm run truffle:cng` to compile and generate the Typescript stubs.
 
 Run `npm run truffle:migrate` to migrate the contracts to ganache.
