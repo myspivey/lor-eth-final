@@ -9,7 +9,8 @@ This website is a blockchain version of a personal project I have been starting 
 The idea of the site is to enable rentals of users who are registered to rent an RV on a nightly basis. The transfer should have a multi step process where
 the renter requests a rental, the renter approves the rental. From there the renter will start the rental at which point they will earn half of the total
 rental cost. To finish the rental the renter marks it complete at which point the rest of the total cost is deposited into their account. The final option
-is for the car owner to cancel instead of confirming the rental. I also implemented an Oracle for License Verification.
+is for the car owner to cancel instead of confirming the rental. I also implemented an Oracle for License Verification. It runs both locally and on Firebase
+and includes Firebase Functions which runs the license Oracle.
 
 ## Setup
 
