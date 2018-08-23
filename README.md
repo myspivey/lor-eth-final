@@ -11,10 +11,13 @@ the renter requests a rental, the renter approves the rental. From there the ren
 rental cost. To finish the rental the renter marks it complete at which point the rest of the total cost is deposited into their account. The final option
 is for the car owner to cancel instead of confirming the rental. I also implemented an Oracle for License Verification.
 
+## Setup
+
+Run `npm i` from the root folder and `/truffle` folder.
 
 ## Running Ganache
 
-You can run `npm run ganache` and this will spin up Ganache-CLI based off the following Mnemonic.
+You can run `npm run truffle:ganache` and this will spin up Ganache-CLI based off the following Mnemonic.
 
 Mnemonic `oak repeat enjoy surprise shed upon skin plug carry okay warrior board`
 
@@ -23,8 +26,6 @@ Mnemonic `oak repeat enjoy surprise shed upon skin plug carry okay warrior board
 `0xA453ecF8c206209713CDF7806C040f6Fa54175ac` I used as the Vehicle Renter
 
 ## Development server
-
-Run `npm i` from the root folder and /truffle folder.
 
 Run `npm run truffle:cng` to compile and generate the Typescript stubs.
 
